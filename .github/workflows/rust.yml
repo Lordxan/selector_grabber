@@ -1,0 +1,24 @@
+name: Rust
+
+on: 
+  push:
+    tags:
+    - '*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: cargo build --verbose --release
+    - name: Run tests
+      run: cargo test --verbose
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "target/release/selector_grabber"
