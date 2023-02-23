@@ -1,0 +1,5 @@
+{
+  "image": "ghcr.io/lordxan/docker-workspaces:rust",
+  "features": {
+  }
+}
